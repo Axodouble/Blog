@@ -3,6 +3,9 @@
   "module": "src/index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "docker:test": "docker build . -t test:test && docker run --rm --name blog test:test"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
