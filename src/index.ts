@@ -1,4 +1,4 @@
-import { readdirSync, existsSync, mkdirSync } from 'fs';
+import { readdirSync, existsSync, mkdirSync, writeFile } from 'fs';
 import { join, extname } from 'path';
 import { getMarkdownFiles } from './tools/files';
 import { translateMarkdownToHtml, batchTranslate } from './tools/translate';
@@ -62,7 +62,7 @@ if (singleFile) {
             console.log(`Found ${files.length} markdown files in: ${inputDir}`);
             const outputFiles = batchTranslate(files, outputDir);
             console.log(`Generated ${outputFiles.length} HTML files in: ${outputDir}`);
-            outputFiles.forEach(file => console.log(` - ${file}`));
+            outputFiles.forEach(file => console.log(` - ${file.title || file.filename}`));
         }
     } catch (error: any) {
         console.error(`Error: ${error.message}`);

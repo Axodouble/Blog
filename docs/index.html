@@ -77,6 +77,9 @@
     <a href="#" onclick="toggleContent('workexperience')">Work</a>;
     <a href="#" onclick="toggleContent('socials')">Socials</a>;
   </span>
+  <span>
+    <a href="#" id="recent-blog">Blog</a>;
+  </span>
   <div id="about" style="display: none;">
     <h2>About Me</h2>
     Axodouble is the online name used by Jasper for creative projects or online
@@ -163,6 +166,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       randomQuote()
+      replaceBlogLink();
     });
 
     const toggledContent = [];
@@ -216,6 +220,22 @@
       }
     }
 
+    function replaceBlogLink() {
+      const blogLink = document.getElementById("recent-blog");
+      if (blogLink) {
+        fetch('blog-list.json')
+          .then(response => response.json())
+          .then(blogs => {
+            if (Array.isArray(blogs) && blogs.length > 0) {
+              const randomBlog = blogs[Math.floor(Math.random() * blogs.length)];
+              blogLink.href = `${encodeURIComponent(randomBlog.filename)}.html`;
+              blogLink.textContent = randomBlog.title;
+            }
+          })
+          .catch(() => {
+          });
+      }
+    }
   </script>
 </body>
 

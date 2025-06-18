@@ -3,12 +3,44 @@ import { extname, join, basename, dirname } from 'path';
 import { existsSync } from 'fs';
 
 /**
+ * Extract title from markdown content
+ * @param markdownContent The markdown content
+ * @returns The extracted title or null if not found
+ */
+function extractTitleFromMarkdown(markdownContent: string): string | null {
+  // Look for the first h1 heading (# Title)
+  const h1Match = markdownContent.match(/^#\s+(.+)$/m);
+  if (h1Match && h1Match[1]) {
+    return h1Match[1].trim();
+  }
+  
+  // If no h1 heading, look for YAML frontmatter title
+  const frontmatterMatch = markdownContent.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (frontmatterMatch) {
+    const frontmatter = frontmatterMatch[1];
+    let titleMatch: RegExpMatchArray | null = null;
+    if (frontmatter) {
+      titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\s*(\n|$)/);
+    }
+    if (titleMatch && titleMatch[1]) {
+      return titleMatch[1].trim();
+    }
+  }
+  
+  return null;
+}
+
+/**
  * Convert a markdown file to HTML with the same styling as index.html
  * @param markdownPath Path to the markdown file
  * @param outputDir Directory to write the HTML file to
- * @returns Path to the generated HTML file
+ * @returns Object with the output path and title information
  */
-export function translateMarkdownToHtml(markdownPath: string, outputDir: string): string {
+export function translateMarkdownToHtml(markdownPath: string, outputDir: string): {
+  outputPath: string;
+  title: string | null;
+  filename: string;
+} {
   // Ensure the markdown file exists
   if (!existsSync(markdownPath)) {
     throw new Error(`Markdown file does not exist: ${markdownPath}`);
@@ -16,6 +48,9 @@ export function translateMarkdownToHtml(markdownPath: string, outputDir: string)
 
   // Read the markdown content
   const markdownContent = readFileSync(markdownPath, 'utf-8');
+  
+  // Extract title from markdown
+  const title = extractTitleFromMarkdown(markdownContent);
   
   // Convert markdown to HTML
   const htmlContent = convertMarkdownToHtml(markdownContent);
@@ -32,12 +67,16 @@ export function translateMarkdownToHtml(markdownPath: string, outputDir: string)
   const outputPath = join(outputDir, `${fileNameWithoutExt}.html`);
   
   // Create a complete HTML document with the same styling as index.html
-  const fullHtmlContent = wrapWithTemplate(htmlContent, fileNameWithoutExt);
+  const fullHtmlContent = wrapWithTemplate(htmlContent, title || fileNameWithoutExt);
   
   // Write the HTML file
   writeFileSync(outputPath, fullHtmlContent);
   
-  return outputPath;
+  return {
+    outputPath,
+    title,
+    filename: fileNameWithoutExt
+  };
 }
 
 /**
@@ -557,10 +596,27 @@ function wrapWithTemplate(htmlContent: string, title: string): string {
  * @param outputDir Directory to write the HTML files to
  * @returns Array of paths to generated HTML files
  */
-export function batchTranslate(markdownPaths: string[], outputDir: string): string[] {
+export function batchTranslate(markdownPaths: string[], outputDir: string) {
   if (!markdownPaths || markdownPaths.length === 0) {
     throw new Error('No markdown files provided');
   }
   
-  return markdownPaths.map(path => translateMarkdownToHtml(path, outputDir));
+  const result = markdownPaths.map((path) =>
+    translateMarkdownToHtml(path, outputDir)
+  );
+
+  const blogList = result.map(file => {
+    return {
+      filename: file.filename,
+      title: file.title || file.filename,
+    };
+  });
+
+  writeFileSync(
+    join(outputDir, 'blog-list.json'),
+    JSON.stringify(blogList, null, 2),
+    'utf-8'
+  );
+
+  return result;
 }
