@@ -3,7 +3,7 @@ import { join, extname } from 'path';
 import { getMarkdownFiles } from './tools/files';
 import { translateMarkdownToHtml, batchTranslate } from './tools/translate';
 
-const markdownDir = join(process.cwd(), 'markdown');
+const markdownDir = join(process.cwd(), 'input');
 const defaultOutputDir = join(process.cwd(), 'output');
 
 // Parse command line arguments
