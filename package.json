@@ -4,8 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "write": "bun run src/index.ts -i docs/blog -o docs/blog",
-    "docker:test": "docker build . -t test:test && docker run --rm --name blog test:test"
+    "write": "bun run src/index.ts -i docs/blog -o docs",
+    "docker:test": "docker build . -t test:test && docker run --rm --name blog test:test",
+    "docker:web": "docker build . -f docker/web/Dockerfile -t test:web && docker run --rm --name blog-web -p 80:80 test:web"
   },
   "devDependencies": {
     "@types/bun": "latest"
