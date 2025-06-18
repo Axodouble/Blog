@@ -1,13 +1,8 @@
 import { readdirSync } from 'fs';
 import { join, extname } from 'path';
+import { getMarkdownFiles } from './tools/files';
 
 const markdownDir = join(process.cwd() + '/markdown');
-
-function getMarkdownFiles(dir: string): string[] {
-    return readdirSync(dir)
-        .filter(file => extname(file).toLowerCase() === '.md')
-        .map(file => join(dir, file));
-}
 
 const args = process.argv.slice(2);
 let inputDir = markdownDir;
