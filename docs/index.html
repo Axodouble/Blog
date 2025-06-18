@@ -1,0 +1,222 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Axodouble</title>
+  <link rel="shortcut icon" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Axodouble, a page for contact, projects and other things related to Axodouble.">
+  <meta name="keywords" content="axodouble, axodouble.com, Axodouble, entropy, ceraia, ceraia community">
+  <link rel="canonical" href="https://axodouble.com">
+  <style>
+    html,
+    body {
+      background-color: #161616;
+      color: #a6a6a6;
+      overflow: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      font-family: Menlo, Consolas, Monaco, 'Liberation Mono', 'Lucida Console', monospace;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      padding-left: 10%;
+      padding-right: 10%;
+      box-sizing: border-box;
+      min-height: 100vh;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .green {
+      color: #27ae60;
+    }
+
+    .white {
+      color: #ffffff;
+    }
+
+    .selected {
+      color: #cfcfcf;
+    }
+
+    .clickable {
+      cursor: pointer;
+    }
+
+    a {
+      color: #ffffff;
+    }
+
+    svg {
+      height: 15rem;
+    }
+  </style>
+</head>
+
+<body>
+  <svg>
+    <image href="dev.svg" width="100%" height="100%" />
+  </svg>
+  <span>
+    <a target="_blank" rel="noopener">Axodouble</a>;<br>
+  </span>
+  <span>
+    <div id="random-quote" class="clickable" , onclick="randomQuote()"></div>
+  </span>
+  <span>
+    <a href="#" onclick="toggleContent('about', 'skillset', 'workexperience')">About</a>;
+    <a href="#" onclick="toggleContent('contact')">Contact</a>;
+    <a href="#" onclick="toggleContent('security')">Security</a>;
+    <a href="#" onclick="toggleContent('skillset')">Skillset</a>;
+    <a href="#" onclick="toggleContent('workexperience')">Work</a>;
+    <a href="#" onclick="toggleContent('socials')">Socials</a>;
+  </span>
+  <div id="about" style="display: none;">
+    <h2>About Me</h2>
+    Axodouble is the online name used by Jasper for creative projects or online
+    contact.<br>
+    I am a Netherlands-based Developer and specialize primarily in making reliable back-end infrastructure.
+    <br><br>
+    I have been working with computers for as long as I can remember, this was aided by the fact I was born around
+    the
+    advent of modern
+    internet infrastructure.
+    <br><br>Over the years I have spent a significant amount of time in communities to learn
+    more about the general infrastructure of the modern web; this has given me the ability to work in different
+    positions with companies that require a more specialized and reliable approach to their internet
+    infrastructure.<br>
+    <h2>Experience</h2>
+    As you might be able to tell I have less experience in front-end design as much as I hate to admit;<br>
+    however I do pride myself in my ability to create reliable infrastructure to support large operations.
+    I host a significant amount of my services locally as a platform to develop on.
+    This not only cuts down costs but also allows me to work with and learn other platforms of infrastructure.
+    <br /><br />
+  </div>
+  <div id="skillset" style="display: none;">
+    <h2>Skillset</h2>
+    <ul>
+      <li>Linux (Desktop & Server) - Since Mar 2019</li>
+      <li>Javascript (NodeJS) - Since Apr 2020</li>
+      <li>MongoDB - Since May 2020</li>
+      <li>PHP - Since Jul 2021</li>
+      <li>Docker - Since Jan 2022</li>
+      <li>Java & Kotlin - Since Mar 2023</li>
+      <li>Python - Since Feb 2023</li>
+      <li>Typescript (NodeJS & Bun) - Since Jan 2024</li>
+      <li>MySQL & PostgreSQL - Since Jun 2024</li>
+      <li>C# (.NET) - Since Dec 2024</li>
+    </ul>
+  </div>
+  <div id="contact" style="display: none;">
+    <h2>Contact</h2>
+    You can contact me via <a href="mailto:axodouble@axodouble.com">mail</a>.<br>
+    You can also contact me on Discord @axodouble.
+
+    I am much more likely to respond to you via mail.
+  </div>
+  <div id="security" style="display: none;">
+    <h2>Reporting a Vulnerability</h2>
+    If you discover a security vulnerability, please send an email to
+    <a href="mailto:security@ceraia.com">security@ceraia.com</a>. We take all security concerns seriously and will
+    respond
+    promptly to your report.<br>
+    <br>
+    <h2>Security Concerns</h2>
+    For any other security-related concerns or questions, please contact us at
+    <a href="mailto:security@ceraia.com">security@ceraia.com</a>.<br>
+    Thank you for helping us keep our project secure.<br>
+  </div>
+  <div id="workexperience" style="display: none;">
+    <h2>Work Experience<a class="clickable" onclick="toggleComment('redacted')">*</a></h2>
+    <h6 id="redacted" style="display: none; margin-top: -20px;">*Semi redacted due to private information, <a
+        href="mailto:axodouble@axodouble.com">mail me</a> for
+      more info.</h6>
+    <ul>
+      <li>Sep 2023 - Current, Open Source Developer</li>
+      <li>
+        Jan 2024 - Jun 2025 (1.5 yrs), Developer & Specialist at Hedin IT
+        <span onclick="toggleComment('white-hedin')" class="green clickable" title="With 1 green">[+1]</span>
+        <span id="white-hedin" class="green" style="display: none;"
+          title="Content hidden due to private information, available via mail.">
+          +1 Recommendation by the Country Manager of Hedin IT
+        </span>
+      </li>
+      <li>Sep 2023 - Dec 2023 (3 mos), Developer at Cyberfusion</li>
+      <li>Feb 2023 - Aug 2023 (7 mos), IT Technician for Ziggo</li>
+      <li>Mar 2020 - Feb 2023 (3 yrs), Technician for Gr8 Hotels </li>
+    </ul>
+  </div>
+  <div id="socials" style="display: none;">
+    <h2>Socials</h2>
+    <ul>
+      <li><a href="https://ceraia.com/">Ceraia</a></li>
+      <li><a href="https://github.com/Axodouble">Github</a></li>
+      <li><a href="https://steamcommunity.com/id/axodouble">Steam</a></li>
+    </ul>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      randomQuote()
+    });
+
+    const toggledContent = [];
+
+    function randomQuote() {
+      const quotes = [
+        "Money can't buy back your youth when you're old, a friend when you're lonely, or peace to your soul. - Johnny Cash",
+        "Can't shake the devil's hand and say you're only kidding. - They Might Be Giants",
+        "A weapon does not decide whether or not to kill. A weapon is a manifestation of a decision that has already been made. - Steven Galloway",
+        "You can't call yourself peaceful if you're not capable of violence. If you're not capable of violence, you're not peaceful; you're harmless. - Someone",
+        "I do believe that, where there is only a choice between cowardice and violence, I would advise violence. - Mahatma Gandhi",
+        "Then there was the war, and I married it because there was nothing else when I reached the age of falling in love. - Guy Sajer",
+        "I fear all we have done is to awaken a sleeping giant and fill him with a terrible resolve. - Isoroku Yamamoto",
+        "Despite all my beans, I'm still just a rat in some jeans. - Jazzodouble",
+        "I hate the word homophobia. It's not a phobia. You're not scared. You're an asshole. - Morgan Freeman",
+        "My doctrines exist to rid maternity hospitals of their horror, to preserve the wife for her husband and the mother for her child. - Ignaz Semmelweis",
+        "There is no real ending. It's just the place where you stop the story. - Frank Herbert",
+        "A new scientific truth does not triumph by convincing its opponents and making them see the light, but rather because its opponents eventually die, and a new generation grows up that is familiar with it. - Max Planck",
+        "It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is most adaptable to change. - Charles Darwin",
+        "Don't waste your time chasing butterflies. Mend your garden, and the butterflies will come. - Mário Quintana",
+      ];
+
+      document.getElementById("random-quote").textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    function toggleContent(...ids) {
+      const contentDivs = document.querySelectorAll('div[id]');
+
+      contentDivs.forEach(div => {
+        if (div.id !== 'random-quote') div.style.display = 'none';
+      });
+
+      ids.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.style.display = 'block';
+      });
+    }
+
+    function toggleComment(id, parent) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+      }
+      if (parent) {
+        const parentElement = document.getElementById(parent);
+        if (parentElement.classList.contains('selected')) {
+          parentElement.classList.remove('selected');
+        } else {
+          parentElement.classList.add('selected');
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>
