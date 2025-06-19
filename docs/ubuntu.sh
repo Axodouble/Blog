@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# curl -fsSL https://u.cer.sh/install.sh | sh
+# curl -fsSL https://axodouble.com/ubuntu.sh | sh
 
 # Install script for Axo's Ubuntu utils
 
