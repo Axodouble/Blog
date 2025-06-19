@@ -415,7 +415,7 @@ function wrapWithTemplate(htmlContent: string, title: string): string {
 <head>
   <meta charset="UTF-8">
   <title>${title} - Axodouble</title>
-  <link rel="shortcut icon" href="../favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${title} - Axodouble">
   <meta name="keywords" content="axodouble, axodouble.com, Axodouble, ${title.toLowerCase()}">
@@ -569,13 +569,13 @@ function wrapWithTemplate(htmlContent: string, title: string): string {
 </head>
 
 <body>
-  <a href="../index.html">
+  <a href="index.html">
     <svg>
-      <image href="../dev.svg" width="100%" height="100%" />
+      <image href="dev.svg" width="100%" height="100%" />
     </svg>
   </a>
   <span>
-    <a href="../index.html">Axodouble</a>; / <span class="white">${title}</span><br>
+    <a href="index.html">Axodouble</a> / <span class="white">${title}</span>;<br>
   </span>
   
   <div class="content-container">
