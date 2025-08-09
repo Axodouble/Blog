@@ -20,7 +20,8 @@ sudo apt install -y \
     gcc \
     unzip \
     make \
-    build-essential
+    build-essential \
+    golang
 
 # Install python build essentials
 sudo apt install -y libssl-dev zlib1g-dev \
@@ -98,3 +99,6 @@ if ! command -v docker &> /dev/null && ! which docker &> /dev/null && ! [ -x "/u
 else
     echo "Docker is already installed, skipping installation."
 fi
+
+source ~/.bashrc
+brew install lazydocker lazygit
