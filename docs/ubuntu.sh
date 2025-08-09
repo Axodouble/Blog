@@ -70,6 +70,15 @@ fi
 # Install Brew if not already installed
 if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    BREW='eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+
+    if ! grep -Fxq "$BREW" ~/.bashrc; then
+        echo "$BREW" >> ~/.bashrc
+    fi
+    if ! grep -Fxq "$BREW" ~/.profile; then
+        echo "$BREW" >> ~/.profile
+    fi
 fi
 
 # Add yt-dlp alias to .bashrc if not already present
@@ -79,9 +88,13 @@ if ! grep -Fxq "$ALIAS_CMD" ~/.bashrc; then
 fi
 
 # Install Docker if not already installed
-if ! command -v docker &> /dev/null; then
+if ! command -v docker &> /dev/null && ! which docker &> /dev/null && ! [ -x "/usr/bin/docker" ]; then
+    echo "Docker not found, installing..."
     curl -fsSL https://get.docker.com | sudo sh
     
     # Add user to docker group
     sudo usermod -aG docker $USER
+    echo "Docker installation completed."
+else
+    echo "Docker is already installed, skipping installation."
 fi
