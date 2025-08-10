@@ -11,6 +11,8 @@ sudo add-apt-repository ppa:tomtomtom/yt-dlp
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y \
+    distrobox \
+    neofetch \
     curl \
     net-tools \
     htop \
@@ -30,7 +32,18 @@ sudo apt install -y libssl-dev zlib1g-dev \
     libxmlsec1-dev libffi-dev liblzma-dev
 
 # Install Bun
-curl -fsSL https://bun.sh/install | bash
+if ! command -v bun &> /dev/null; then
+    curl -fsSL https://bun.sh/install | bash
+fi
+
+# Install yt-dlp
+sudo apt install -y yt-dlp
+
+# Add yt-dlp alias to .bashrc if not already present
+ALIAS_CMD="alias d=\"yt-dlp -o '~/Memes/%(title)s.%(ext)s'\""
+if ! grep -Fxq "$ALIAS_CMD" ~/.bashrc; then
+    echo "$ALIAS_CMD" >> ~/.bashrc
+fi
 
 # Install Node Version Manager
 if ! command -v nvm &> /dev/null; then
@@ -65,8 +78,6 @@ if ! grep -Fxq "$PYENV_INIT" ~/.profile; then
     echo "$PYENV_INIT" >> ~/.profile
 fi
 
-# Install yt-dlp
-sudo apt install -y yt-dlp
 
 # Install Tailscale if not already installed
 if ! command -v tailscale &> /dev/null; then
@@ -85,12 +96,6 @@ if ! command -v brew &> /dev/null; then
     if ! grep -Fxq "$BREW" ~/.profile; then
         echo "$BREW" >> ~/.profile
     fi
-fi
-
-# Add yt-dlp alias to .bashrc if not already present
-ALIAS_CMD="alias d=\"yt-dlp -o '~/Memes/%(title)s.%(ext)s'\""
-if ! grep -Fxq "$ALIAS_CMD" ~/.bashrc; then
-    echo "$ALIAS_CMD" >> ~/.bashrc
 fi
 
 # Install Docker if not already installed
