@@ -32,6 +32,11 @@ sudo apt install -y libssl-dev zlib1g-dev \
 # Install Bun
 curl -fsSL https://bun.sh/install | bash
 
+# Install Node Version Manager
+if ! command -v nvm &> /dev/null; then
+    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh | bash
+fi
+
 # Install Pyenv if not already installed
 if ! command -v pyenv &> /dev/null; then
     curl https://pyenv.run | bash
