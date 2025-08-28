@@ -23,7 +23,9 @@ sudo apt install -y \
     unzip \
     make \
     build-essential \
-    golang
+    golang \
+    flatpak \
+    gnome-software-plugin-flatpak
 
 # Install python build essentials
 sudo apt install -y libssl-dev zlib1g-dev \
@@ -96,6 +98,8 @@ if ! command -v brew &> /dev/null; then
     if ! grep -Fxq "$BREW" ~/.profile; then
         echo "$BREW" >> ~/.profile
     fi
+
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # Install Docker if not already installed
@@ -110,5 +114,10 @@ else
     echo "Docker is already installed, skipping installation."
 fi
 
-source ~/.bashrc
+# Install gobonsai
+curl -fsSL https://raw.githubusercontent.com/Axodouble/gobonsai/refs/heads/master/install.sh | bash
+
+# Add Flathub to Flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 brew install lazydocker lazygit
