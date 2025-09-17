@@ -6,4 +6,3 @@
 - [Lego Tranquil Garden](https://www.lego.com/en-au/product/tranquil-garden-10315)
 - Any other Lego display item.
 - [IFIXIT Full Soldering Toolkit](https://www.ifixit.com/en-au/products/fixhub-soldering-toolkit)
-- [IFIXIT Electric Precision Screwdriver](https://www.ifixit.com/en-au/products/precision-electric-screwdriver)
