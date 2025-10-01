@@ -123,4 +123,5 @@ brew install lazydocker lazygit
 
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
+sudo apt install ripgrep fd-find
 sudo snap install nvim --classic
