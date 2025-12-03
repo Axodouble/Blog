@@ -120,8 +120,3 @@ curl -fsSL https://raw.githubusercontent.com/Axodouble/gobonsai/refs/heads/maste
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 brew install lazydocker lazygit
-
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
-sudo apt install ripgrep fd-find fzf -y
-sudo snap install nvim --classic

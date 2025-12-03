@@ -477,7 +477,6 @@ function wrapWithTemplate(
   title: string
 ): string {
   return `<html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>${title} - Axodouble</title>
@@ -486,160 +485,14 @@ function wrapWithTemplate(
   <meta name="description" content="${title} - Axodouble">
   <meta name="keywords" content="axodouble, axodouble.com, Axodouble, ${title.toLowerCase()}">
   <link rel="canonical" href="https://axodouble.com/${title.toLowerCase()}">
-  <style>
-    html,
-    body {
-      background-color: #161616;
-      color: #a6a6a6;
-      overflow: scroll;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      font-family: Menlo, Consolas, Monaco, 'Liberation Mono', 'Lucida Console', monospace;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .5rem;
-      padding-left: 10%;
-      padding-right: 10%;
-      box-sizing: border-box;
-      min-height: 100vh;
-    }
 
-    html::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-      display: none;
-    }
-
-    .green {
-      color: #27ae60;
-    }
-
-    .white {
-      color: #ffffff;
-    }
-
-    .selected {
-      color: #cfcfcf;
-    }
-
-    .clickable {
-      cursor: pointer;
-    }
-
-    a {
-      color: #ffffff;
-    }
-
-    svg {
-      height: 15rem;
-    }
-    
-    pre, code {
-      background-color: #1e1e1e;
-      border-radius: 4px;
-      padding: 8px;
-      overflow-x: auto;
-      width: 100%;
-    }
-    
-    code {
-      padding: 2px 4px;
-    }
-    
-    blockquote {
-      border-left: 4px solid #27ae60;
-      padding-left: 10px;
-      margin-left: 0;
-    }
-    
-    .blockquote-level-2 {
-      margin-left: 20px;
-    }
-    
-    .blockquote-level-3 {
-      margin-left: 40px;
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 20px 0;
-    }
-    
-    table, th, td {
-      border: 1px solid #333;
-    }
-    
-    th, td {
-      padding: 8px;
-      text-align: left;
-    }
-    
-    th {
-      background-color: #1e1e1e;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-      color: #ffffff;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-    
-    hr {
-      border: none;
-      border-top: 1px solid #333;
-      margin: 20px 0;
-    }
-    
-    .content-container {
-      max-width: 800px;
-      width: 100%;
-    }
-    
-    .task-list {
-      list-style-type: none;
-      padding-left: 20px;
-    }
-    
-    .task-list-item {
-      position: relative;
-      padding-left: 25px;
-    }
-    
-    .task-list-item:before {
-      content: '☐';
-      position: absolute;
-      left: 0;
-    }
-    
-    .task-list-item.checked:before {
-      content: '✓';
-      color: #27ae60;
-    }
-    
-    p {
-      margin: 10px 0;
-    }
-    
-    ul, ol {
-      padding-left: 25px;
-      margin: 10px 0;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="style.css?d=${Date.now()}" />
 </head>
 
 <body>
-  <a href="index.html">
-    <svg>
-      <image href="dev.svg" width="100%" height="100%" />
-    </svg>
-  </a>
+  <svg href="index.html">
+    <image href="dev.svg" width="100%" height="100%"  />
+  </svg>
   <span>
     <a href="index.html">Axodouble</a>/<span class="white">${filename}</span>;<br>
   </span>
@@ -647,12 +500,7 @@ function wrapWithTemplate(
   <div class="content-container">
     ${htmlContent}
   </div>
-
-  <script>
-    // Add any scripts you want to include
-  </script>
 </body>
-
 </html>`;
 }
 
