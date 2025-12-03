@@ -193,8 +193,6 @@
       replaceBlogLink();
     });
 
-    const toggledContent = [];
-
     function randomQuote() {
       const quotes = [
         "Money can't buy back your youth when you're old, a friend when you're lonely, or peace to your soul. - Johnny Cash",
@@ -216,14 +214,23 @@
       document.getElementById("random-quote").textContent = quotes[Math.floor(Math.random() * quotes.length)];
     }
 
+    let lastToggled = []
+
     function toggleContent(...ids) {
       const contentDivs = document.querySelectorAll('div[id]');
 
+      if(JSON.stringify(lastToggled) === JSON.stringify(ids)){
+        ids, lastToggled = [];
+      } else {
+        lastToggled = ids;
+      }
+
       contentDivs.forEach(div => {
         if (div.id !== 'random-quote') div.style.display = 'none';
+        if(lastToggled.length === 0 && div.id === "appended-content") div.style.display = 'block';
       });
 
-      ids.forEach(id => {
+      lastToggled.forEach(id => {
         const element = document.getElementById(id);
         if (element) element.style.display = 'block';
       });
@@ -268,6 +275,7 @@
       if (fetched.ok) {
         const html = await fetched.text();
         const container = document.createElement('div');
+        container.id = 'appended-content';
         container.innerHTML = html;
         document.body.appendChild(container);
       }
