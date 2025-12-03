@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
-import { extname, join, basename, dirname } from "path";
+import { extname, join, basename, dirname, resolve } from "path";
 import { existsSync } from "fs";
 
 /**
@@ -70,11 +70,14 @@ export function translateMarkdownToHtml(
   const outputPath = join(outputDir, `g.${fileNameWithoutExt}.html`);
 
   // Create a complete HTML document with the same styling as index.html
-  const fullHtmlContent = wrapWithTemplate(
-    `g.${fileNameWithoutExt}.html`,
-    htmlContent,
-    title || fileNameWithoutExt
-  );
+  const fullHtmlContent =
+    fileNameWithoutExt === "append"
+      ? htmlContent
+      : wrapWithTemplate(
+          `g.${fileNameWithoutExt}.html`,
+          htmlContent,
+          title || fileNameWithoutExt
+        );
 
   // Write the HTML file
   writeFileSync(outputPath, fullHtmlContent);
@@ -664,9 +667,9 @@ export function batchTranslate(markdownPaths: string[], outputDir: string) {
     throw new Error("No markdown files provided");
   }
 
-  const result = markdownPaths.map((path) =>
-    translateMarkdownToHtml(path, outputDir)
-  );
+  const result = markdownPaths
+    .map((path) => translateMarkdownToHtml(path, outputDir))
+    .filter((res) => res.filename !== "append");
 
   const blogList = result.map((file) => {
     return {

@@ -1,4 +1,4 @@
-# Australia
+# (Blog) Australia
 
 #### This is an active blog post where I will be writing my activites since I have moved to Australia.
 

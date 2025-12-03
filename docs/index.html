@@ -262,6 +262,16 @@
           });
       }
     }
+
+    (async function () {
+      const fetched = await fetch('g.append.html').catch(() => null);
+      if (fetched.ok) {
+        const html = await fetched.text();
+        const container = document.createElement('div');
+        container.innerHTML = html;
+        document.body.appendChild(container);
+      }
+    })();
   </script>
 </body>
 
