@@ -8,3 +8,4 @@ RUN bun run write
 
 FROM webserver
 COPY --from=bun /app/docs /usr/share/nginx/html
+COPY docker/web/nginx.conf /etc/nginx/conf.d/default.conf
