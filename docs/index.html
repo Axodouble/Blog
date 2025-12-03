@@ -248,13 +248,13 @@
       const blogLink = document.getElementById("recent-blog");
       const recentBlogBody = document.getElementById("recent-blog-body");
       if (blogLink) {
-        fetch('blog-list.json')
+        fetch('g.blog-list.json')
           .then(response => response.json())
           .then(blogs => {
             if (Array.isArray(blogs) && blogs.length > 0) {
               const randomBlog = blogs[Math.floor(Math.random() * blogs.length)];
               recentBlogBody.style.display = 'inline';
-              blogLink.href = `${encodeURIComponent(randomBlog.filename)}.html`;
+              blogLink.href = `g.${encodeURIComponent(randomBlog.filename)}.html`;
               blogLink.textContent = randomBlog.title;
             }
           })
