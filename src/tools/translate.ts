@@ -500,6 +500,15 @@ function wrapWithTemplate(
   <div class="content-container">
     ${htmlContent}
   </div>
+
+  <script>
+      (function loadExtrasJs() {
+        const script = document.createElement('script');
+        script.src = 'extras.js';
+        script.async = true;
+        document.head.appendChild(script);
+      })();
+  </script>
 </body>
 </html>`;
 }
