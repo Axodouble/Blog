@@ -149,7 +149,7 @@
       replaceBlogLink();
       (function loadExtrasJs() {
         const script = document.createElement('script');
-        script.src = 'extras.js';
+        script.src = 'extras.js?cachebust=' + Date.now();
         script.async = true;
         document.head.appendChild(script);
       })();
