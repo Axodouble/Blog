@@ -211,11 +211,12 @@
       const blogLink = document.getElementById("recent-blog");
       const recentBlogBody = document.getElementById("recent-blog-body");
       if (blogLink) {
-        fetch('g.blog-list.json')
+        fetch(`g.blog-list.json?d=${Date.now()}`)
           .then(response => response.json())
           .then(blogs => {
             if (Array.isArray(blogs) && blogs.length > 0) {
-              const randomBlog = blogs[Math.floor(Math.random() * blogs.length)];
+              const availableBlogs = blogs.filter(blog => !blog.filename.startsWith('_'));
+              const randomBlog = availableBlogs[Math.floor(Math.random() * availableBlogs.length)];
               recentBlogBody.style.display = 'inline';
               blogLink.href = `g.${encodeURIComponent(randomBlog.filename)}.html`;
               blogLink.textContent = randomBlog.title;
