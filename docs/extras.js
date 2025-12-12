@@ -40,6 +40,10 @@ function spawnEffect(effectChar, pattern) {
   const effect = document.createElement("span");
   effect.textContent = effectChar;
   effect.style.position = "fixed";
+  effect.style.textAlign = "center";
+  effect.style.display = "flex";
+  effect.style.alignItems = "center";
+  effect.style.justifyContent = "center";
   effect.style.left = Math.random() * 100 + "vw";
   effect.style.fontSize = Math.random() * 12 + 12 + "px";
   effect.style.opacity = Math.random() * 0.5 + 0.5;
@@ -76,6 +80,23 @@ function spawnEffect(effectChar, pattern) {
         easing: "linear",
       }
     );
+  }
+
+  if (effectChar === "🎅") {
+    effect.style.pointerEvents = "auto";
+    effect.style.cursor = "pointer";
+
+    effect.addEventListener("click", () => {
+      effect.textContent = "💥";
+      effect.animate([{ opacity: "100%" }, { opacity: "0%" }], {
+        duration: 500,
+        easing: "linear",
+      });
+      setTimeout(() => {
+        effect.style.opacity = "0%";
+        effect.remove();
+      }, 500);
+    });
   }
 
   setTimeout(() => {
