@@ -2,7 +2,7 @@
 
 #### This is an active blog post where I will be writing my activites since I have moved to Australia.
 
-## A job, work & life (Wed Dec 3 2025)
+## A job, work & life (2025 / 12 / 3)
 
 Having found a job as a Dev-Ops engineer a bit ago, a lot of my free time has been put into learning; studying network architecture, networking in general, development practices and system administration.
 
@@ -17,7 +17,7 @@ Being able to do all of this with my Girlfriend has been absolutely lovely, and 
 
 But that will be potentially my last entry for this year.
 
-## Early Beginnings (Wed Jun 18 2025)
+## Early Beginnings (2025 / 6 / 18)
 
 I have recently moved to Australia, and moved in with my lovely Girlfriend.
 I have spent the past few days organizing myself, learning some new things and just getting comfortable, largely thanks to the help of those around me.
