@@ -31,6 +31,27 @@ function extractTitleFromMarkdown(markdownContent: string): string | null {
 }
 
 /**
+ * Extract date from markdown content
+ * @param markdownContent The markdown content
+ * @returns The extracted date in YYYY-MM-DD format or null if not found
+ */
+function extractDateFromMarkdown(markdownContent: string): string | null {
+  // Date will always be formatted as YYYY / MM / DD in the file and will be the first occurrence of this pattern
+  const dateMatch = markdownContent.match(
+    /(\d{4})\s*\/\s*(\d{1,2})\s*\/\s*(\d{1,2})/
+  );
+  if (dateMatch) {
+    const date = new Date();
+    date.setFullYear(parseInt(dateMatch[1]!, 10));
+    date.setMonth(parseInt(dateMatch[2]!, 10) - 1);
+    date.setDate(parseInt(dateMatch[3]!, 10));
+
+    return date.toISOString();
+  }
+  return null;
+}
+
+/**
  * Convert a markdown file to HTML with the same styling as index.html
  * @param markdownPath Path to the markdown file
  * @param outputDir Directory to write the HTML file to
@@ -42,6 +63,7 @@ export function translateMarkdownToHtml(
 ): {
   outputPath: string;
   title: string | null;
+  date: string | null;
   filename: string;
 } {
   // Ensure the markdown file exists
@@ -54,6 +76,9 @@ export function translateMarkdownToHtml(
 
   // Extract title from markdown
   const title = extractTitleFromMarkdown(markdownContent);
+
+  // Extract date from markdown
+  const date = extractDateFromMarkdown(markdownContent);
 
   // Convert markdown to HTML
   const htmlContent = convertMarkdownToHtml(markdownContent);
@@ -70,14 +95,17 @@ export function translateMarkdownToHtml(
   const outputPath = join(outputDir, `g.${fileNameWithoutExt}.html`);
 
   // Create a complete HTML document with the same styling as index.html
-  const fullHtmlContent =
-    fileNameWithoutExt === "append"
-      ? htmlContent
-      : wrapWithTemplate(
-          `g.${fileNameWithoutExt}.html`,
-          htmlContent,
-          title || fileNameWithoutExt
-        );
+  let fullHtmlContent = ``;
+
+  if (fileNameWithoutExt === "append") {
+    fullHtmlContent = htmlContent;
+  } else {
+    fullHtmlContent = wrapWithTemplate(
+      `g.${fileNameWithoutExt}.html`,
+      htmlContent,
+      title || fileNameWithoutExt
+    );
+  }
 
   // Write the HTML file
   writeFileSync(outputPath, fullHtmlContent);
@@ -85,6 +113,7 @@ export function translateMarkdownToHtml(
   return {
     outputPath,
     title,
+    date,
     filename: fileNameWithoutExt,
   };
 }
@@ -484,7 +513,9 @@ function wrapWithTemplate(
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${title} - Axodouble">
   <meta name="keywords" content="axodouble, axodouble.com, Axodouble, ${title.toLowerCase()}">
-  <link rel="canonical" href="https://axodouble.com/${title.toLowerCase()}">
+  <link rel="canonical" href="https://axodouble.com/${encodeURIComponent(
+    filename
+  )}">
 
   <link rel="stylesheet" type="text/css" href="style.css?d=${Date.now()}" />
 </head>
@@ -532,6 +563,7 @@ export function batchTranslate(markdownPaths: string[], outputDir: string) {
     return {
       filename: file.filename,
       title: file.title || file.filename,
+      date: file.date || null,
     };
   });
 

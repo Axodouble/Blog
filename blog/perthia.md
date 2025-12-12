@@ -2,7 +2,7 @@
 
 [The Perthia Project](https://perthia.com)
 
-## 10 / 12 / 2025
+## 2025 / 12 / 10
 
 As I recently moved to Perth, Australia, I noticed that there was a severe lack of gaming servers that are located in Australia, let alone Perth.
 

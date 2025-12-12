@@ -189,7 +189,7 @@
 
       contentDivs.forEach(div => {
         if (div.id !== 'random-quote') div.style.display = 'none';
-        if(lastToggled.length === 0 && div.id === "appended-content") div.style.display = 'block';
+        if(lastToggled.length === 0 && (div.id === "appended-content" || div.id === "blogs-container")) div.style.display = 'block';
       });
 
       lastToggled.forEach(id => {
@@ -221,11 +221,18 @@
           .then(response => response.json())
           .then(blogs => {
             if (Array.isArray(blogs) && blogs.length > 0) {
-              const availableBlogs = blogs.filter(blog => !blog.filename.startsWith('_'));
-              const randomBlog = availableBlogs[Math.floor(Math.random() * availableBlogs.length)];
-              recentBlogBody.style.display = 'inline';
-              blogLink.href = `g.${encodeURIComponent(randomBlog.filename)}.html`;
-              blogLink.textContent = randomBlog.title;
+              const availableBlogs = blogs.filter(blog => !blog.filename.startsWith('_')).sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateB - dateA;
+              }).slice(0, 3); // Get the 5 most recent blogs
+
+              const blogsContainer = document.createElement('div')
+              document.body.appendChild(blogsContainer);
+              blogsContainer.id = "blogs-container";
+              blogsContainer.style.display = "inline";
+              blogsContainer.innerHTML = '<a>Recent Posts</a>;<br>';
+              blogsContainer.innerHTML += `${availableBlogs.map(blog => `<a href="g.${encodeURIComponent(blog.filename)}.html">${blog.title}</a>; ${blog.date ? '('+new Date(blog.date).toLocaleDateString()+')' : ''}<br>`).join('')}</ul>`;
             }
           })
           .catch(() => {
@@ -237,6 +244,7 @@
       const fetched = await fetch('g.append.html').catch(() => null);
       if (fetched.ok) {
         const html = await fetched.text();
+        if(html.includes("<svg")) return; // Own site, do not append
         const container = document.createElement('div');
         container.id = 'appended-content';
         container.innerHTML = html;
