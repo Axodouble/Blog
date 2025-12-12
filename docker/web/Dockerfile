@@ -2,8 +2,10 @@ FROM nginx:alpine AS webserver
 FROM oven/bun:alpine AS bun
 
 WORKDIR /app
-COPY . .
+COPY package.json .
 RUN bun install
+
+COPY . .
 RUN bun run write
 
 FROM webserver
