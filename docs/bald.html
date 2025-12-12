@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>find bald</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0d1117;
+      }
+
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        background-color: #0d1117;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="canvas"></canvas><br />
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      resizeCanvas();
+
+      const emojis = [
+        // Comment for format
+        "👵",
+        "👨‍🦳",
+        "👨‍🦰",
+        "👩",
+        "👴",
+        "👶",
+        "🧑",
+        "👨‍🦱",
+        "👨‍🦱",
+        "👨‍🦱",
+        "👨‍🦱",
+      ];
+      const boxes = [];
+      let luigiIndex = -1; // Tracks the index of Luigi
+      let speed = 2;
+      let boxesToSpawn = Math.floor(
+        (window.innerWidth * window.innerHeight) / 5184
+      ); // Adjust for screen size
+
+      let disableClick = false;
+
+      let difficulty = 1;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+
+      respawnCubes(difficulty);
+
+      canvas.addEventListener("click", (event) => {
+        if (disableClick) return;
+        const { clientX, clientY } = event;
+        const luigiBox = boxes[luigiIndex];
+        const distance = Math.sqrt(
+          (clientX - (luigiBox.x + luigiBox.width / 2)) ** 2 +
+            (clientY - (luigiBox.y + luigiBox.height / 2)) ** 2
+        );
+
+        if (distance <= 80) {
+          boxes.forEach((box) => {
+            if (box.emoji == "👨‍🦲") {
+              box.emoji = "✅";
+            } else {
+              for (let i = 1; i <= 18; i++) {
+                setTimeout(() => {
+                  box.opacity = 1 - i * 0.05;
+                }, i * 50);
+              }
+            }
+          });
+
+          setTimeout(() => {
+            difficulty++;
+            respawnCubes(difficulty);
+          }, 2000); // Found Luigi!
+
+          disableClick = true;
+        } else {
+          // Hide all boxes that are not luigi and pause the game for 2 seconds and then respawn
+          boxes.forEach((box) => {
+            if (box.emoji !== "👨‍🦲") {
+              disableClick = true;
+
+              for (let i = 1; i <= 18; i++) {
+                setTimeout(() => {
+                  box.opacity = 1 - i * 0.05;
+                }, i * 50);
+              }
+            }
+          });
+
+          setTimeout(() => {
+            difficulty = 1;
+            respawnCubes(difficulty);
+          }, 2000);
+        }
+      });
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        boxes.forEach((box) => {
+          ctx.font = "48px serif";
+          ctx.globalAlpha = box.opacity;
+          ctx.fillText(box.emoji, box.x, box.y + box.height);
+        });
+      }
+
+      function update() {
+        boxes.forEach((box) => {
+          box.x += box.dx;
+          box.y += box.dy;
+
+          if (box.x <= 0 || box.x >= canvas.width - box.width) {
+            box.dx *= -1;
+          }
+          if (box.y <= 0 || box.y >= canvas.height - box.height) {
+            box.dy *= -1;
+          }
+        });
+      }
+
+      function respawnCubes(difficulty = 1) {
+        // difficulty chooses how many of the different emojis are used
+        disableClick = false;
+        boxes.length = 0; // Clear the array
+
+        for (let i = 0; i < boxesToSpawn; i++) {
+          const emoji =
+            emojis[
+              Math.floor(
+                Math.random() *
+                  (difficulty > emojis.length ? emojis.length : difficulty)
+              )
+            ];
+          const box = {
+            x: Math.random() * (canvas.width - 50), // Random position
+            y: Math.random() * (canvas.height - 50), // Random position
+            width: 40, // Fixed size
+            height: 40, // Fixed size
+            dx: (Math.random() - 0.5) * speed * 2, // Random speed in x direction
+            dy: (Math.random() - 0.5) * speed * 2, // Random speed in y direction
+            emoji: emoji,
+            opacity: 1,
+          };
+
+          boxes.push(box);
+        }
+
+        // Ensure Luigi is in the boxes
+        luigiIndex = Math.floor(Math.random() * boxes.length);
+        boxes[luigiIndex].emoji = "👨‍🦲";
+      }
+
+      function loop() {
+        draw();
+        update();
+        requestAnimationFrame(loop);
+      }
+
+      loop();
+    </script>
+  </body>
+</html>
