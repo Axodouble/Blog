@@ -1,260 +1,307 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Axodouble</title>
+    <link rel="shortcut icon" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Axodouble, a page for contact, projects and other things related to Axodouble."
+    />
+    <meta
+      name="keywords"
+      content="axodouble, axodouble.com, Axodouble, entropy, ceraia, ceraia community"
+    />
+    <meta property="og:title" content="Axodouble" />
+    <meta
+      property="og:description"
+      content="Axodouble, a page for contact, projects and other things related to Axodouble."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://axodouble.com" />
+    <meta property="og:image" content="https://axodouble.com/favicon.png" />
 
-<head>
-  <meta charset="UTF-8">
-  <title>Axodouble</title>
-  <link rel="shortcut icon" href="favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Axodouble, a page for contact, projects and other things related to Axodouble." />
-  <meta name="keywords" content="axodouble, axodouble.com, Axodouble, entropy, ceraia, ceraia community" />
-  <meta property="og:title" content="Axodouble" />
-  <meta property="og:description" content="Axodouble, a page for contact, projects and other things related to Axodouble." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://axodouble.com" />
-  <meta property="og:image" content="https://axodouble.com/favicon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Axodouble" />
+    <meta
+      name="twitter:description"
+      content="Axodouble, a page for contact, projects and other things related to Axodouble."
+    />
+    <meta name="twitter:image" content="https://axodouble.com/favicon.png" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Axodouble" />
-  <meta name="twitter:description" content="Axodouble, a page for contact, projects and other things related to Axodouble." />
-  <meta name="twitter:image" content="https://axodouble.com/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="style.css?d=03122025" />
 
-  <link rel="stylesheet" type="text/css" href="style.css?d=03122025" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Axodouble",
-    "url": "https://axodouble.com",
-    "sameAs": [
-      "https://github.com/Axodouble",
-      "https://steamcommunity.com/id/axodouble",
-      "mailto:axodouble@axodouble.com"
-    ],
-    "jobTitle": "Dev-Ops Engineer"
-  }
-  </script>
-
-  <link rel="canonical" href="https://axodouble.com" />
-</head>
-
-<body>
-  <svg>
-    <image href="dev.svg" width="100%" height="100%" />
-  </svg>
-  <span>
-    <a target="_blank" rel="noopener">Axodouble</a>;<br>
-  </span>
-  <span>
-    <div id="random-quote" class="clickable" , onclick="randomQuote()"></div>
-  </span>
-  <span>
-    <a href="#" onclick="toggleContent('about', 'skillset', 'workexperience')">About</a>;
-    <a href="#" onclick="toggleContent('contact')">Contact</a>;
-    <a href="#" onclick="toggleContent('security')">Security</a>;
-    <a href="#" onclick="toggleContent('skillset')">Skillset</a>;
-    <a href="#" onclick="toggleContent('workexperience')">Work</a>;
-    <a href="#" onclick="toggleContent('socials')">Socials</a>;
-  </span>
-  <span id="recent-blog-body" style="display: none;">
-    <a href="#" id="recent-blog">Blog</a>;
-  </span>
-  <div id="about" style="display: none;">
-    <h2>About Me</h2>
-    Axodouble is the online name used by Jasper for creative projects or online
-    contact.<br>
-    I am an Australia-based Dev-Ops Engineer and specialize primarily in making reliable back-end infrastructure.
-    <br><br>
-    I have been working with computers for as long as I can remember, this was aided by the fact I was born around
-    the advent of modern internet infrastructure.
-    <br><br>Over the years I have spent a significant amount of time in communities to learn
-    more about the general infrastructure of the modern web; this has given me the ability to work in different
-    positions with companies that require a more specialized and reliable approach to their internet
-    infrastructure.<br>
-    <h2>Experience</h2>
-    As you might be able to tell I have less experience in front-end design;<br>
-    however I do pride myself in my ability to create reliable infrastructure to support large operations.
-    I host a significant amount of my services locally as a platform to develop on.
-    This not only cuts down costs but also allows me to work with and learn other platforms of infrastructure.
-    <br /><br />
-  </div>
-  <div id="skillset" style="display: none;">
-    <h2>Skillset</h2>
-    <ul>
-      <li>Linux (Desktop & Server) - Since Mar 2019</li>
-      <li>Javascript (NodeJS) - Since Apr 2020</li>
-      <li>MongoDB - Since May 2020</li>
-      <li>PHP - Since Jul 2021</li>
-      <li>Docker (Certificate, Docker Mastery) - Since Jan 2022</li>
-      <li>Python - Since Feb 2023</li>
-      <li>Proxmox & Virtualization - Since Feb 2023</li>
-      <li>Networking (Layer 1, 3 to 7) - Since Feb 2023</li>
-      <li>Java & Kotlin - Since Mar 2023</li>
-      <li>Typescript (NodeJS & Bun) - Since Jan 2024</li>
-      <li>MySQL & PostgreSQL - Since Jun 2024</li>
-      <li>OpenTofu / Terraform - Since Jun 2024</li>
-      <li>C# (.NET) - Since Dec 2024</li>
-    </ul>
-  </div>
-  <div id="contact" style="display: none;">
-    <h2>Contact</h2>
-    You can contact me via <a href="mailto:axodouble@axodouble.com">mail</a>.<br>
-    You can also contact me on Discord @axodouble.
-
-    I am much more likely to respond to you via mail.
-  </div>
-  <div id="security" style="display: none;">
-    <h2>Reporting a Vulnerability</h2>
-    If you discover a security vulnerability, please send an email to
-    <a href="mailto:security@ceraia.com">security@ceraia.com</a>. We take all security concerns seriously and will
-    respond
-    promptly to your report.<br>
-    <br>
-    <h2>Security Concerns</h2>
-    For any other security-related concerns or questions, please contact us at
-    <a href="mailto:security@ceraia.com">security@ceraia.com</a>.<br>
-    Thank you for helping us keep our project secure.<br>
-  </div>
-  <div id="workexperience" style="display: none;">
-    <h2>Work Experience<a class="clickable" onclick="toggleComment('redacted')">*</a></h2>
-    <h6 id="redacted" style="display: none; margin-top: -20px;">*Semi redacted due to private information, <a
-        href="mailto:axodouble@axodouble.com">mail me</a> for
-      more info.</h6>
-    <ul>
-      <li>Aug 2025 - Current, Dev-Ops Engineer</li>
-      <li>
-        Jan 2024 - Jun 2025 (1.5 yrs), Developer & Specialist at Hedin IT
-        <span onclick="toggleComment('white-hedin')" class="green clickable" title="With 1 green">[+1]</span>
-        <span id="white-hedin" class="green" style="display: none;"
-          title="Content hidden due to private information, available via mail.">
-          +1 Recommendation by the Country Manager of Hedin IT
-        </span>
-      </li>
-      <li>Sep 2023 - Dec 2023 (3 mos), Developer at Cyberfusion</li>
-      <li>Feb 2023 - Aug 2023 (7 mos), IT Technician for Ziggo</li>
-      <li>Mar 2020 - Feb 2023 (3 yrs), Technician for Gr8 Hotels </li>
-    </ul>
-  </div>
-  <div id="socials" style="display: none;">
-    <h2>Socials</h2>
-    <ul>
-      <li><a href="https://ceraia.com/">Ceraia</a></li>
-      <li><a href="https://github.com/Axodouble">Github</a></li>
-      <li><a href="https://steamcommunity.com/id/axodouble">Steam</a></li>
-    </ul>
-  </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      randomQuote()
-      replaceBlogLink();
-      (function loadExtrasJs() {
-        const script = document.createElement('script');
-        script.src = 'extras.js?cachebust=' + Date.now();
-        script.async = true;
-        document.head.appendChild(script);
-      })();
-    });
-
-    function randomQuote() {
-      const quotes = [
-        "Can't shake the devil's hand and say you're only kidding. - They Might Be Giants",
-        "You can't call yourself peaceful if you're not capable of violence. If you're not capable of violence, you're not peaceful; you're harmless.",
-        "I do believe that, where there is only a choice between cowardice and violence, I would advise violence. - Mahatma Gandhi",
-        "Then there was the war, and I married it because there was nothing else when I reached the age of falling in love. - Guy Sajer",
-        "I fear all we have done is to awaken a sleeping giant and fill him with a terrible resolve. - Isoroku Yamamoto",
-        "Despite all my beans, I'm still just a rat in some jeans. - Jazzodouble",
-        "My doctrines exist to rid maternity hospitals of their horror, to preserve the wife for her husband and the mother for her child. - Ignaz Semmelweis",
-        "A new scientific truth does not triumph by convincing its opponents and making them see the light, but rather because its opponents eventually die, and a new generation grows up that is familiar with it. - Max Planck",
-        "It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is most adaptable to change. - Charles Darwin",
-        "Don't waste your time chasing butterflies. Mend your garden, and the butterflies will come. - Mário Quintana",
-        "Society grows great when old men plant trees whose shade they know they'll never sit in.",
-        "What a lovely thing utopia is when you were too young to remember the horror that came with it. - Exurb1a",
-        "If philosophers gave clear answers then surely the whole field would've died out with the Greeks. - Exurb1a",
-        "You're afraid to be corny, but I was born on the cob. - Axodouble",
-        "You cannot be bothered for the lives of the small, yet you still curse your own gods when they grant you injustices of similar apathy?",
-        "There are cathedrals everywhere for those with eyes to see.",
-        "I may not be everything I want to be, but I'm more than I was, and I'm still learning."
-      ];
-
-      document.getElementById("random-quote").textContent = quotes[Math.floor(Math.random() * quotes.length)];
-    }
-
-    let lastToggled = []
-
-    function toggleContent(...ids) {
-      const contentDivs = document.querySelectorAll('div[id]');
-
-      if(JSON.stringify(lastToggled) === JSON.stringify(ids)){
-        ids, lastToggled = [];
-      } else {
-        lastToggled = ids;
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Axodouble",
+        "url": "https://axodouble.com",
+        "sameAs": [
+          "https://github.com/Axodouble",
+          "https://steamcommunity.com/id/axodouble",
+          "mailto:axodouble@axodouble.com"
+        ],
+        "jobTitle": "Dev-Ops Engineer"
       }
+    </script>
 
-      contentDivs.forEach(div => {
-        if (div.id !== 'random-quote') div.style.display = 'none';
-        if(lastToggled.length === 0 && (div.id === "appended-content" || div.id === "blogs-container")) div.style.display = 'block';
+    <link rel="canonical" href="https://axodouble.com" />
+  </head>
+
+  <body>
+    <svg>
+      <image href="dev.svg" width="100%" height="100%" />
+    </svg>
+    <span> <a target="_blank" rel="noopener">Axodouble</a>;<br /> </span>
+    <span>
+      <div id="random-quote" class="clickable" , onclick="randomQuote()"></div>
+    </span>
+    <span>
+      <a href="#" onclick="toggleContent('about', 'skillset', 'workexperience')"
+        >About</a
+      >; <a href="#" onclick="toggleContent('contact')">Contact</a>;
+      <a href="#" onclick="toggleContent('security')">Security</a>;
+      <a href="#" onclick="toggleContent('skillset')">Skillset</a>;
+      <a href="#" onclick="toggleContent('workexperience')">Work</a>;
+      <a href="#" onclick="toggleContent('socials')">Socials</a>;
+      <a href="https://haveibeenprwned.com">Prwned</a>;
+    </span>
+    <span id="recent-blog-body" style="display: none">
+      <a href="#" id="recent-blog">Blog</a>;
+    </span>
+    <div id="about" style="display: none">
+      <h2>About Me</h2>
+      Axodouble is the online name used by Jasper for creative projects or
+      online contact.<br />
+      I am an Australia-based Dev-Ops Engineer and specialize primarily in
+      making reliable back-end infrastructure.
+      <br /><br />
+      I have been working with computers for as long as I can remember, this was
+      aided by the fact I was born around the advent of modern internet
+      infrastructure.
+      <br /><br />Over the years I have spent a significant amount of time in
+      communities to learn more about the general infrastructure of the modern
+      web; this has given me the ability to work in different positions with
+      companies that require a more specialized and reliable approach to their
+      internet infrastructure.<br />
+      <h2>Experience</h2>
+      As you might be able to tell I have less experience in front-end
+      design;<br />
+      however I do pride myself in my ability to create reliable infrastructure
+      to support large operations. I host a significant amount of my services
+      locally as a platform to develop on. This not only cuts down costs but
+      also allows me to work with and learn other platforms of infrastructure.
+      <br /><br />
+    </div>
+    <div id="skillset" style="display: none">
+      <h2>Skillset</h2>
+      <ul>
+        <li>Linux (Desktop & Server) - Since Mar 2019</li>
+        <li>Javascript (NodeJS) - Since Apr 2020</li>
+        <li>MongoDB - Since May 2020</li>
+        <li>PHP - Since Jul 2021</li>
+        <li>Docker (Certificate, Docker Mastery) - Since Jan 2022</li>
+        <li>Python - Since Feb 2023</li>
+        <li>Proxmox & Virtualization - Since Feb 2023</li>
+        <li>Networking (Layer 1, 3 to 7) - Since Feb 2023</li>
+        <li>Java & Kotlin - Since Mar 2023</li>
+        <li>Typescript (NodeJS & Bun) - Since Jan 2024</li>
+        <li>MySQL & PostgreSQL - Since Jun 2024</li>
+        <li>OpenTofu / Terraform - Since Jun 2024</li>
+        <li>C# (.NET) - Since Dec 2024</li>
+      </ul>
+    </div>
+    <div id="contact" style="display: none">
+      <h2>Contact</h2>
+      You can contact me via
+      <a href="mailto:axodouble@axodouble.com">mail</a>.<br />
+      You can also contact me on Discord @axodouble. I am much more likely to
+      respond to you via mail.
+    </div>
+    <div id="security" style="display: none">
+      <h2>Reporting a Vulnerability</h2>
+      If you discover a security vulnerability, please send an email to
+      <a href="mailto:security@ceraia.com">security@ceraia.com</a>. We take all
+      security concerns seriously and will respond promptly to your report.<br />
+      <br />
+      <h2>Security Concerns</h2>
+      For any other security-related concerns or questions, please contact us at
+      <a href="mailto:security@ceraia.com">security@ceraia.com</a>.<br />
+      Thank you for helping us keep our project secure.<br />
+    </div>
+    <div id="workexperience" style="display: none">
+      <h2>
+        Work Experience<a class="clickable" onclick="toggleComment('redacted')"
+          >*</a
+        >
+      </h2>
+      <h6 id="redacted" style="display: none; margin-top: -20px">
+        *Semi redacted due to private information,
+        <a href="mailto:axodouble@axodouble.com">mail me</a> for more info.
+      </h6>
+      <ul>
+        <li>Aug 2025 - Current, Dev-Ops Engineer</li>
+        <li>
+          Jan 2024 - Jun 2025 (1.5 yrs), Developer & Specialist at Hedin IT
+          <span
+            onclick="toggleComment('white-hedin')"
+            class="green clickable"
+            title="With 1 green"
+            >[+1]</span
+          >
+          <span
+            id="white-hedin"
+            class="green"
+            style="display: none"
+            title="Content hidden due to private information, available via mail."
+          >
+            +1 Recommendation by the Country Manager of Hedin IT
+          </span>
+        </li>
+        <li>Sep 2023 - Dec 2023 (3 mos), Developer at Cyberfusion</li>
+        <li>Feb 2023 - Aug 2023 (7 mos), IT Technician for Ziggo</li>
+        <li>Mar 2020 - Feb 2023 (3 yrs), Technician for Gr8 Hotels</li>
+      </ul>
+    </div>
+    <div id="socials" style="display: none">
+      <h2>Socials</h2>
+      <ul>
+        <li><a href="https://ceraia.com/">Ceraia</a></li>
+        <li><a href="https://github.com/Axodouble">Github</a></li>
+        <li><a href="https://steamcommunity.com/id/axodouble">Steam</a></li>
+      </ul>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        randomQuote();
+        replaceBlogLink();
+        (function loadExtrasJs() {
+          const script = document.createElement("script");
+          script.src = "extras.js?cachebust=" + Date.now();
+          script.async = true;
+          document.head.appendChild(script);
+        })();
       });
 
-      lastToggled.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) element.style.display = 'block';
-      });
-    }
+      function randomQuote() {
+        const quotes = [
+          "Can't shake the devil's hand and say you're only kidding. - They Might Be Giants",
+          "You can't call yourself peaceful if you're not capable of violence. If you're not capable of violence, you're not peaceful; you're harmless.",
+          "I do believe that, where there is only a choice between cowardice and violence, I would advise violence. - Mahatma Gandhi",
+          "Then there was the war, and I married it because there was nothing else when I reached the age of falling in love. - Guy Sajer",
+          "I fear all we have done is to awaken a sleeping giant and fill him with a terrible resolve. - Isoroku Yamamoto",
+          "Despite all my beans, I'm still just a rat in some jeans. - Jazzodouble",
+          "My doctrines exist to rid maternity hospitals of their horror, to preserve the wife for her husband and the mother for her child. - Ignaz Semmelweis",
+          "A new scientific truth does not triumph by convincing its opponents and making them see the light, but rather because its opponents eventually die, and a new generation grows up that is familiar with it. - Max Planck",
+          "It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is most adaptable to change. - Charles Darwin",
+          "Don't waste your time chasing butterflies. Mend your garden, and the butterflies will come. - Mário Quintana",
+          "Society grows great when old men plant trees whose shade they know they'll never sit in.",
+          "What a lovely thing utopia is when you were too young to remember the horror that came with it. - Exurb1a",
+          "If philosophers gave clear answers then surely the whole field would've died out with the Greeks. - Exurb1a",
+          "You're afraid to be corny, but I was born on the cob. - Axodouble",
+          "You cannot be bothered for the lives of the small, yet you still curse your own gods when they grant you injustices of similar apathy?",
+          "There are cathedrals everywhere for those with eyes to see.",
+          "I may not be everything I want to be, but I'm more than I was, and I'm still learning.",
+        ];
 
-    function toggleComment(id, parent) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+        document.getElementById("random-quote").textContent =
+          quotes[Math.floor(Math.random() * quotes.length)];
       }
-      if (parent) {
-        const parentElement = document.getElementById(parent);
-        if (parentElement.classList.contains('selected')) {
-          parentElement.classList.remove('selected');
+
+      let lastToggled = [];
+
+      function toggleContent(...ids) {
+        const contentDivs = document.querySelectorAll("div[id]");
+
+        if (JSON.stringify(lastToggled) === JSON.stringify(ids)) {
+          ids, (lastToggled = []);
         } else {
-          parentElement.classList.add('selected');
+          lastToggled = ids;
+        }
+
+        contentDivs.forEach((div) => {
+          if (div.id !== "random-quote") div.style.display = "none";
+          if (
+            lastToggled.length === 0 &&
+            (div.id === "appended-content" || div.id === "blogs-container")
+          )
+            div.style.display = "block";
+        });
+
+        lastToggled.forEach((id) => {
+          const element = document.getElementById(id);
+          if (element) element.style.display = "block";
+        });
+      }
+
+      function toggleComment(id, parent) {
+        const element = document.getElementById(id);
+        if (element) {
+          element.style.display =
+            element.style.display === "none" ? "block" : "none";
+        }
+        if (parent) {
+          const parentElement = document.getElementById(parent);
+          if (parentElement.classList.contains("selected")) {
+            parentElement.classList.remove("selected");
+          } else {
+            parentElement.classList.add("selected");
+          }
         }
       }
-    }
 
-    function replaceBlogLink() {
-      const blogLink = document.getElementById("recent-blog");
-      const recentBlogBody = document.getElementById("recent-blog-body");
-      if (blogLink) {
-        fetch(`g.blog-list.json?d=${Date.now()}`)
-          .then(response => response.json())
-          .then(blogs => {
-            if (Array.isArray(blogs) && blogs.length > 0) {
-              const availableBlogs = blogs.filter(blog => !blog.filename.startsWith('_')).sort((a, b) => {
-                const dateA = new Date(a.date);
-                const dateB = new Date(b.date);
-                return dateB - dateA;
-              }).slice(0, 3); // Get the 5 most recent blogs
+      function replaceBlogLink() {
+        const blogLink = document.getElementById("recent-blog");
+        const recentBlogBody = document.getElementById("recent-blog-body");
+        if (blogLink) {
+          fetch(`g.blog-list.json?d=${Date.now()}`)
+            .then((response) => response.json())
+            .then((blogs) => {
+              if (Array.isArray(blogs) && blogs.length > 0) {
+                const availableBlogs = blogs
+                  .filter((blog) => !blog.filename.startsWith("_"))
+                  .sort((a, b) => {
+                    const dateA = new Date(a.date);
+                    const dateB = new Date(b.date);
+                    return dateB - dateA;
+                  })
+                  .slice(0, 3); // Get the 5 most recent blogs
 
-              const blogsContainer = document.createElement('div')
-              document.body.appendChild(blogsContainer);
-              blogsContainer.id = "blogs-container";
-              blogsContainer.style.display = "inline";
-              blogsContainer.innerHTML = '<a>Recent Posts</a>;<br>';
-              blogsContainer.innerHTML += `${availableBlogs.map(blog => `<a href="g.${encodeURIComponent(blog.filename)}.html">${blog.title}</a>; ${blog.date ? '('+new Date(blog.date).toLocaleDateString()+')' : ''}<br>`).join('')}</ul>`;
-            }
-          })
-          .catch(() => {
-          });
+                const blogsContainer = document.createElement("div");
+                document.body.appendChild(blogsContainer);
+                blogsContainer.id = "blogs-container";
+                blogsContainer.style.display = "inline";
+                blogsContainer.innerHTML = "<a>Recent Posts</a>;<br>";
+                blogsContainer.innerHTML += `${availableBlogs
+                  .map(
+                    (blog) =>
+                      `<a href="g.${encodeURIComponent(blog.filename)}.html">${
+                        blog.title
+                      }</a>; ${
+                        blog.date
+                          ? "(" + new Date(blog.date).toLocaleDateString() + ")"
+                          : ""
+                      }<br>`
+                  )
+                  .join("")}</ul>`;
+              }
+            })
+            .catch(() => {});
+        }
       }
-    }
 
-    (async function () {
-      const fetched = await fetch('g.append.html').catch(() => null);
-      if (fetched.ok) {
-        const html = await fetched.text();
-        if(html.includes("<svg")) return; // Own site, do not append
-        const container = document.createElement('div');
-        container.id = 'appended-content';
-        container.innerHTML = html;
-        document.body.appendChild(container);
-      }
-    })();
-  </script>
-</body>
-
+      (async function () {
+        const fetched = await fetch("g.append.html").catch(() => null);
+        if (fetched.ok) {
+          const html = await fetched.text();
+          if (html.includes("<svg")) return; // Own site, do not append
+          const container = document.createElement("div");
+          container.id = "appended-content";
+          container.innerHTML = html;
+          document.body.appendChild(container);
+        }
+      })();
+    </script>
+  </body>
 </html>
