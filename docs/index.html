@@ -46,6 +46,30 @@
       }
     </script>
 
+    <script>
+      function knownSince(subject, year, month) {
+        const date = new Date();
+        const currentYear = date.getFullYear();
+        const currentMonth = date.getMonth() + 1;
+        let yearsKnown = currentYear - year;
+        let monthsKnown = currentMonth - month;
+        if (monthsKnown < 0) {
+          yearsKnown--;
+          monthsKnown += 12;
+        }
+
+        let time = "";
+
+        if (yearsKnown > 0) {
+          time += yearsKnown + " year" + (yearsKnown > 1 ? "s" : "");
+        } else if (monthsKnown > 0) {
+          time += monthsKnown + " month" + (monthsKnown > 1 ? "s" : "");
+        }
+
+        return `${subject} for ${time}.`;
+      }
+    </script>
+
     <link rel="canonical" href="https://axodouble.com" />
   </head>
 
@@ -96,21 +120,48 @@
     </div>
     <div id="skillset" style="display: none">
       <h2>Skillset</h2>
-      <ul>
-        <li>Linux (Desktop & Server) - Since Mar 2019</li>
-        <li>Javascript (NodeJS) - Since Apr 2020</li>
-        <li>MongoDB - Since May 2020</li>
-        <li>PHP - Since Jul 2021</li>
-        <li>Docker (Certificate, Docker Mastery) - Since Jan 2022</li>
-        <li>Python - Since Feb 2023</li>
-        <li>Proxmox & Virtualization - Since Feb 2023</li>
-        <li>Networking (Layer 1, 3 to 7) - Since Feb 2023</li>
-        <li>Java & Kotlin - Since Mar 2023</li>
-        <li>Typescript (NodeJS & Bun) - Since Jan 2024</li>
-        <li>MySQL & PostgreSQL - Since Jun 2024</li>
-        <li>OpenTofu / Terraform - Since Jun 2024</li>
-        <li>C# (.NET) - Since Dec 2024</li>
-      </ul>
+      <h5>
+        As of
+        <script>
+          document.write(new Date().toDateString());
+        </script>
+      </h5>
+      <ul id="skillset-list"></ul>
+      <script>
+        const skillset = [
+          { subject: "Linux (Desktop & Server)", year: 2019, month: 3 },
+          { subject: "Javascript (NodeJS)", year: 2020, month: 3 },
+          { subject: "MongoDB", year: 2020, month: 4 },
+          { subject: "PHP", year: 2021, month: 6 },
+          {
+            subject: "Docker (Certificate, Docker Mastery)",
+            year: 2022,
+            month: 0,
+          },
+          { subject: "Python", year: 2023, month: 1 },
+          { subject: "Proxmox & Virtualization", year: 2023, month: 1 },
+          { subject: "Networking (Layer 1, 3 to 7)", year: 2023, month: 1 },
+          { subject: "Java & Kotlin", year: 2023, month: 2 },
+          { subject: "Typescript (NodeJS & Bun)", year: 2024, month: 0 },
+          { subject: "MySQL & PostgreSQL", year: 2024, month: 5 },
+          { subject: "OpenTofu / Terraform", year: 2024, month: 5 },
+          { subject: "C# (.NET)", year: 2024, month: 11 },
+          { subject: "Golang", year: 2025, month: 2 },
+          {
+            subject: "Xenserver & Citrix Virtualization",
+            year: 2025,
+            month: 6,
+          },
+          { subject: "Dev-Ops Practices", year: 2025, month: 7 },
+        ];
+
+        const ul = document.getElementById("skillset-list");
+        skillset.forEach(({ subject, year, month }) => {
+          const li = document.createElement("li");
+          li.textContent = knownSince(subject, year, month);
+          ul.appendChild(li);
+        });
+      </script>
     </div>
     <div id="contact" style="display: none">
       <h2>Contact</h2>
