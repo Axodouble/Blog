@@ -94,7 +94,7 @@
       <a href="#" onclick="toggleContent('socials')">Socials</a>;
       <a href="https://haveibeenprwned.com">Prwned</a>;
     </span>
-    <span id="recent-blog-body" style="display: none">
+<span id="recent-blog-body" style="display: none">
       <a href="#" id="recent-blog">Blog</a>;
     </span>
     <div id="about" style="display: none">
@@ -226,7 +226,25 @@
         <li><a href="https://steamcommunity.com/id/axodouble">Steam</a></li>
       </ul>
     </div>
+    <br><br>
+    <span>
+      PGP:
+      <a
+      href="jasper.asc"
+      onclick="copyPgpFingerprint()"
+      title="Copy fingerprint and download public key"
+      >
+      F040 06F4 5E4E BC44 0526  B710 E6A4 FD2E A96B D45C</a>;
+    </span>
+    
     <script>
+      function copyPgpFingerprint() {
+      const fingerprint =
+        "F040 06F4 5E4E BC44 0526  B710 E6A4 FD2E A96B D45C";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fingerprint).catch(() => {});
+      }
+      }
       document.addEventListener("DOMContentLoaded", function () {
         randomQuote();
         replaceBlogLink();
