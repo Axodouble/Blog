@@ -12,7 +12,6 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install -y \
   distrobox \
-  neofetch \
   curl \
   net-tools \
   htop \
@@ -26,6 +25,13 @@ sudo apt install -y \
   golang \
   flatpak \
   gnome-software-plugin-flatpak
+
+# Install Zig
+wget https://ziglang.org/download/0.15.2/zig-x86_64-linux-0.15.2.tar.xz
+tar xf ./zig-x86_64-linux-0.15.2.tar.xz 
+sudo mv zig-x86_64-linux-0.15.2 /opt/zig-0.15
+rm ./zig-x86_64-linux-0.15.2.tar.xz
+ln -s /opt/zig-0.15/zig /usr/local/bin/zig
 
 # Install python build essentials
 sudo apt install -y libssl-dev zlib1g-dev \
