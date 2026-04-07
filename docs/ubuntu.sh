@@ -58,32 +58,9 @@ if ! command -v nvm &>/dev/null; then
   curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh | bash
 fi
 
-# Install Pyenv if not already installed
-if ! command -v pyenv &>/dev/null; then
-  curl https://pyenv.run | bash
-fi
-
-PYENV_ROOT='export PYENV_ROOT="$HOME/.pyenv"'
-PYENV_PATH='[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"'
-PYENV_INIT='eval "$(pyenv init - bash)"'
-
-if ! grep -Fxq "$PYENV_ROOT" ~/.bashrc; then
-  echo "$PYENV_ROOT" >>~/.bashrc
-fi
-if ! grep -Fxq "$PYENV_PATH" ~/.bashrc; then
-  echo "$PYENV_PATH" >>~/.bashrc
-fi
-if ! grep -Fxq "$PYENV_INIT" ~/.bashrc; then
-  echo "$PYENV_INIT" >>~/.bashrc
-fi
-if ! grep -Fxq "$PYENV_ROOT" ~/.profile; then
-  echo "$PYENV_ROOT" >>~/.profile
-fi
-if ! grep -Fxq "$PYENV_PATH" ~/.profile; then
-  echo "$PYENV_PATH" >>~/.profile
-fi
-if ! grep -Fxq "$PYENV_INIT" ~/.profile; then
-  echo "$PYENV_INIT" >>~/.profile
+# Install UV
+if ! command -v uv &>/dev/null; then
+  curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
 # Install Tailscale if not already installed
@@ -118,9 +95,6 @@ if ! command -v docker &>/dev/null && ! which docker &>/dev/null && ! [ -x "/usr
 else
   echo "Docker is already installed, skipping installation."
 fi
-
-# Install gobonsai
-curl -fsSL https://raw.githubusercontent.com/Axodouble/gobonsai/refs/heads/master/install.sh | bash
 
 # Add Flathub to Flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
