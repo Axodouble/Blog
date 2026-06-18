@@ -27,6 +27,11 @@ for (let i = 0; i < args.length; i++) {
   }
 }
 
+// If the input directory does not exist exit
+if(!existsSync(inputDir)){
+  process.exit(0)
+}
+
 // Ensure output directory exists
 if (!existsSync(outputDir)) {
   mkdirSync(outputDir, { recursive: true });
